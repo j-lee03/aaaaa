@@ -58,15 +58,14 @@
     <script>
         // 페이지가 로드되면 타이머를 시작합니다.
         window.onload = function() {
-            // 5초 후에 코드를 실행합니다. (5000밀리초 = 5초)
-            // 시간을 변경하려면 이 숫자를 조절하세요. (예: 10초는 10000)
+        
             setTimeout(function() {
                 // 원래 탭(opener)에 있는 enableConsent 함수를 실행
                 if (window.opener && typeof window.opener.enableConsent === 'function') {
                     window.opener.enableConsent();
                     window.close(); // 현재 탭 닫기
                 }
-            }, 5000); // 5초로 설정
+            }, 10000); // 10초로 설정
         };
     </script>
 </body>
