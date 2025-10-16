@@ -113,13 +113,13 @@
             <fieldset>
                 <legend>지원 서류</legend>
                 <div class="form-group">
-                    <label for="resume">이력서 및 자기소개서 (PDF, DOCX 파일) <span class="required-star">*</span></label>
-                    <input type="file" id="resume" name="resume" accept=".pdf, .docx" required>
-                </div>
-                 <div class="form-group">
-                    <label for="portfolio">포트폴리오 (선택사항, ZIP 파일)</label>
-                    <input type="file" id="portfolio" name="portfolio" accept=".zip">
-                </div>
+    <label for="resume_link">이력서 및 자기소개서 링크 <span class="required-star">*</span></label>
+    <input type="text" id="resume_link" name="이력서 링크" placeholder="파일을 구글 드라이브 등에 올린 후, 공유 가능한 링크를 붙여넣어주세요." required>
+</div>
+<div class="form-group">
+    <label for="portfolio_link">포트폴리오 링크 (선택사항)</label>
+    <input type="text" id="portfolio_link" name="포트폴리오 링크" placeholder="포트폴리오가 있다면 공유 링크를 붙여넣어주세요.">
+</div>
                 <div class="form-group">
                     <label for="coverLetter">지원 동기 <span class="required-star">*</span></label>
                     <textarea id="coverLetter" name="지원 동기" placeholder="지원 동기를 1500자 이내로 작성해주세요." required></textarea>
