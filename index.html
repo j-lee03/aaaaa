@@ -175,5 +175,18 @@
         
         charCount.textContent = `${textarea.value.length} / 1500 자`;
     </script>
+    // --- 여기부터 새로운 코드 ---
+    const openPolicyBtn = document.getElementById('openPolicyBtn');
+
+    // '내용 확인하기' 버튼을 클릭하면 policy.html을 새 탭으로 엽니다.
+    openPolicyBtn.addEventListener('click', () => {
+        window.open('policy.html', '_blank');
+    });
+
+    // policy.html 탭에서 호출할 함수입니다.
+    function enableConsent() {
+        const agreementCheckbox = document.getElementById('agreement');
+        agreementCheckbox.disabled = false; // 체크박스를 활성화하고
+        agreementCheckbox.checked = true;   // 자동으로 체크합니다.
 </body>
 </html>
