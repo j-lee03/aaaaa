@@ -221,7 +221,7 @@
         birthYearInput.addEventListener('input', () => {
             const year = parseInt(birthYearInput.value, 10);
             // 입력값이 있고, 숫자이며, 1970~2008 범위를 벗어났을 때 경고 표시
-            if (birthYearInput.value && (isNaN(year) || year < 1950 || year > 2008)) {
+            if (birthYearInput.value && (isNaN(year) || year < 1970 || year > 2008)) {
                 birthYearWarning.style.display = 'block';
             } else {
                 birthYearWarning.style.display = 'none';
