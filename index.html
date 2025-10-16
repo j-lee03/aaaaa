@@ -126,12 +126,18 @@
                     <label for="coverLetter">지원 동기 <span class="required-star">*</span></label>
                     <textarea id="coverLetter" name="지원 동기" placeholder="지원 동기를 1500자 이내로 작성해주세요." required></textarea>
                 </div>
-            </fieldset>
+            <fieldset>
+    <legend>개인정보 수집 및 이용 동의</legend>
+    <div style="padding: 15px; text-align: center;">
+        <p>원활한 지원을 위해 개인정보 수집 및 이용 안내를 반드시 확인해주세요.</p>
+        <button type="button" id="openPolicyBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border: 1px solid #007bff; background-color: #fff; color: #007bff; border-radius: 5px;">내용 확인하고 동의하기 (새 탭)</button>
+    </div>
+</fieldset>
 
-            <div class="agreement-group">
-                <input type="checkbox" id="agreement" name="agreement" required>
-                <label for="agreement">개인정보 수집 및 이용에 동의합니다. <span class="required-star">*</span></label>
-            </div>
+<div class="agreement-group">
+    <input type="checkbox" id="agreement" name="agreement" required disabled>
+    <label for="agreement">개인정보 수집 및 이용에 모두 동의합니다. <span class="required-star">*</span></label>
+</div>
             
             <br>
             <button type="submit">제출하기</button>
