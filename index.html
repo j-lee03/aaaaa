@@ -4,12 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025년도 제11기 훈련생 온라인 지원</title>
-    <style>body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;line-height:1.7;margin:0;padding:0;background-color:#f4f4f4;color:#333}.container{max-width:800px;margin:30px auto;padding:30px;border:1px solid #ddd;background-color:#fff;box-shadow:0 0 10px rgba(0,0,0,.05)}.header{text-align:center;margin-bottom:40px}h1{font-size:26px;font-weight:700;border-bottom:2px solid #000;padding-bottom:10px}h2{font-size:20px;margin-top:40px;border-bottom:1px solid #ccc;padding-bottom:8px;color:#0056b3}.info-list{list-style-type:none;padding-left:0}.info-list li{margin-bottom:10px;font-size:16px}.info-list strong{display:inline-block;width:100px;font-weight:700}form{margin-top:30px}fieldset{border:1px solid #ddd;padding:20px;margin-bottom:20px;border-radius:5px}legend{font-size:18px;font-weight:700;color:#333;padding:0 10px}.form-group{margin-bottom:20px}label{display:block;margin-bottom:8px;font-weight:700}label .required-star{color:red}input[type=text],input[type=email],input[type=tel],textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}textarea{resize:vertical;min-height:150px}input[type=file]{border:none}.agreement-group{margin-top:30px;padding:15px;background-color:#f9f9f9;border-radius:5px}.agreement-group label{display:inline-block;margin-left:10px;font-weight:400}button[type=submit]{display:block;width:100%;padding:15px;font-size:18px;font-weight:700;color:#fff;background-color:#007bff;border:none;border-radius:5px;cursor:pointer;transition:background-color .3s}button[type=submit]:hover{background-color:#0056b3}.footer{text-align:center;margin-top:50px}.date{font-weight:700}.organization{font-size:18px;font-weight:700;margin-top:10px}</style>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        .header { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 26px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 40px; border-bottom: 1px solid #ccc; padding-bottom: 8px; color: #0056b3; }
+        .info-list { list-style-type: none; padding-left: 0; }
+        .info-list li { margin-bottom: 10px; font-size: 16px; }
+        .info-list strong { display: inline-block; width: 100px; font-weight: bold; }
+        form { margin-top: 30px; }
+        fieldset { border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px; }
+        legend { font-size: 18px; font-weight: bold; color: #333; padding: 0 10px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        label .required-star { color: red; }
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea { resize: vertical; min-height: 150px; }
+        .agreement-group { margin-top: 30px; padding: 15px; background-color: #f9f9f9; border-radius: 5px; }
+        .agreement-group label { display: inline-block; margin-left: 10px; font-weight: normal; }
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover { background-color: #0056b3; }
+        .footer { text-align: center; margin-top: 50px; }
+        .date { font-weight: bold; }
+    </style>
 </head>
 <body>
     <div class="container">
+        <div class="header">
+            <h1>2025년도 제11기 훈련생 모집 공고</h1>
+        </div>
+
+        <h2>1. 모집 요강</h2>
+        <ul class="info-list">
+            <li><strong>모집 과정:</strong> [2025 예술의전당 무대음향 훈련생모집]</li>
+            <li><strong>모집 기수:</strong> 제11기</li>
+            <li><strong>교육 기간:</strong> 2025년10월27일 ~ 2026년03월27일 (총 6개월)</li>
+            <li><strong>접수 기간:</strong> 2025년10월20일 ~ 2025년10월26일</li>
+        </ul>
+
         <h2>2. 온라인 지원서 작성</h2>
         <form action="https://formspree.io/f/mblzqpee" method="POST">
+            <fieldset>
+                <legend>개인 정보</legend>
+                <div class="form-group">
+                    <label for="fullName">성명 <span class="required-star">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처 <span class="required-star">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="'-' 없이 숫자만 입력하세요 (예: 01012345678)" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일 <span class="required-star">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="예: example@email.com" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>지원 서류 (링크 제출)</legend>
+                <div class="form-group">
+                    <label for="resume_link">이력서 및 자기소개서 링크 <span class="required-star">*</span></label>
+                    <input type="text" id="resume_link" name="이력서 링크" placeholder="파일을 구글 드라이브 등에 올린 후, 공유 가능한 링크를 붙여넣어주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="portfolio_link">포트폴리오 링크 (선택사항)</label>
+                    <input type="text" id="portfolio_link" name="포트폴리오 링크" placeholder="포트폴리오가 있다면 공유 링크를 붙여넣어주세요.">
+                </div>
+                <div class="form-group">
+                    <label for="coverLetter">지원 동기 <span class="required-star">*</span></label>
+                    <textarea id="coverLetter" name="지원 동기" placeholder="지원 동기를 1500자 이내로 작성해주세요." required></textarea>
+                </div>
+            </fieldset>
+
             <fieldset>
                 <legend>개인정보 수집 및 이용 동의</legend>
                 <div style="padding: 15px; text-align: center;">
@@ -22,26 +122,50 @@
                 <input type="checkbox" id="agreement" name="agreement" required disabled>
                 <label for="agreement">개인정보 수집 및 이용에 모두 동의합니다. <span class="required-star">*</span></label>
             </div>
-
+            
             <br>
             <button type="submit">제출하기</button>
         </form>
+
+        <div class="footer">
+            <p class="date">2025년 10월 13일</p>
+            <img src="sac_logo.png" alt="예술의전당 로고" style="width: 150px; margin-top: 10px;">
         </div>
+    </div>
 
     <script>
-        // (지원동기 글자 수 카운터 코드는 여기에 있어야 합니다)
+        // 지원동기 글자 수 카운터
+        const textarea = document.getElementById('coverLetter');
+        const charCount = document.createElement('div');
+        charCount.style.textAlign = 'right';
+        charCount.style.marginTop = '5px';
+        charCount.style.fontSize = '14px';
+        charCount.style.color = '#666';
+        textarea.parentNode.appendChild(charCount);
 
-        // --- 여기부터가 중요합니다 ---
+        textarea.addEventListener('input', () => {
+            const currentLength = textarea.value.length;
+            const maxLength = 1500;
+            charCount.textContent = `${currentLength} / ${maxLength} 자`;
+
+            if (currentLength > maxLength) {
+                textarea.value = textarea.value.substring(0, maxLength);
+                charCount.textContent = `${maxLength} / ${maxLength} 자`;
+                charCount.style.color = 'red';
+            } else {
+                charCount.style.color = '#666';
+            }
+        });
+        charCount.textContent = `${textarea.value.length} / 1500 자`;
+
+        // 개인정보 동의 탭 기능
         const openPolicyBtn = document.getElementById('openPolicyBtn');
         const agreementCheckbox = document.getElementById('agreement');
 
-        // '내용 확인하기' 버튼을 클릭하면 policy.html을 새 탭으로 엽니다.
         openPolicyBtn.addEventListener('click', () => {
             window.open('policy.html', '_blank');
         });
 
-        // policy.html 탭에서 호출할 함수입니다.
-        // 이 함수가 체크박스를 활성화하고 자동으로 체크합니다.
         function enableConsent() {
             agreementCheckbox.disabled = false;
             agreementCheckbox.checked = true;
