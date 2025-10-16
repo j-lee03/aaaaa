@@ -60,6 +60,13 @@
         button[type="submit"]:hover { background-color: #0056b3; }
         .footer { text-align: center; margin-top: 50px; }
         .date { font-weight: bold; }
+        /* ✅ 경고 메시지 스타일 추가 */
+        .warning-message {
+            color: #d93025;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none; /* 처음에는 숨겨둠 */
+        }
     </style>
 </head>
 <body>
@@ -83,14 +90,17 @@
                 <div class="form-group">
                     <label for="fullName">성명 <span class="required-star">*</span></label>
                     <input type="text" id="fullName" name="fullName" placeholder="이름을 입력하세요" required>
+                    <div id="fullNameWarning" class="warning-message">한글 또는 영문 이름만 입력해주세요.</div>
                 </div>
                 <div class="form-group">
                     <label for="phone">연락처 <span class="required-star">*</span></label>
                     <input type="tel" id="phone" name="phone" placeholder="'-' 없이 숫자만 입력하세요 (예: 01012345678)" required>
+                    <div id="phoneWarning" class="warning-message">숫자만 입력해주세요.</div>
                 </div>
                 <div class="form-group">
                     <label for="email">이메일 <span class="required-star">*</span></label>
                     <input type="email" id="email" name="email" placeholder="예: example@email.com" required>
+                    <div id="emailWarning" class="warning-message">올바른 이메일 형식이 아닙니다.</div>
                 </div>
             </fieldset>
 
@@ -99,10 +109,12 @@
                 <div class="form-group">
                     <label for="resume_link">이력서 및 자기소개서 링크 <span class="required-star">*</span></label>
                     <input type="text" id="resume_link" name="이력서 링크" placeholder="파일을 구글 드라이브 등에 올린 후, 공유 가능한 링크를 붙여넣어주세요." required>
+                    <div id="resumeLinkWarning" class="warning-message">'http://' 또는 'https://'로 시작하는 올바른 주소를 입력해주세요.</div>
                 </div>
                 <div class="form-group">
                     <label for="portfolio_link">포트폴리오 링크 (선택사항)</label>
                     <input type="text" id="portfolio_link" name="포트폴리오 링크" placeholder="포트폴리오가 있다면 공유 링크를 붙여넣어주세요.">
+                     <div id="portfolioLinkWarning" class="warning-message">'http://' 또는 'https://'로 시작하는 올바른 주소를 입력해주세요.</div>
                 </div>
                 <div class="form-group">
                     <label for="coverLetter">지원 동기 <span class="required-star">*</span></label>
@@ -129,47 +141,74 @@
 
         <div class="footer">
             <p class="date">2025년 10월 13일</p>
-            <img src="fhrh.png" alt="예술의전당 로고" style="width: 150px; margin-top: 10px;">
+            <img src="fhrh" alt="예술의전당 로고" style="width: 150px; margin-top: 10px;">
         </div>
     </div>
 
     <script>
-        // 지원동기 글자 수 카운터
+        // --- 기존 기능 (글자 수 카운터, 개인정보 동의) ---
         const textarea = document.getElementById('coverLetter');
         const charCount = document.createElement('div');
-        charCount.style.textAlign = 'right';
-        charCount.style.marginTop = '5px';
-        charCount.style.fontSize = '14px';
-        charCount.style.color = '#666';
+        charCount.style.textAlign = 'right'; charCount.style.marginTop = '5px'; charCount.style.fontSize = '14px'; charCount.style.color = '#666';
         textarea.parentNode.appendChild(charCount);
-
         textarea.addEventListener('input', () => {
-            const currentLength = textarea.value.length;
-            const maxLength = 1500;
+            const currentLength = textarea.value.length; const maxLength = 1500;
             charCount.textContent = `${currentLength} / ${maxLength} 자`;
-
             if (currentLength > maxLength) {
                 textarea.value = textarea.value.substring(0, maxLength);
                 charCount.textContent = `${maxLength} / ${maxLength} 자`;
                 charCount.style.color = 'red';
-            } else {
-                charCount.style.color = '#666';
-            }
+            } else { charCount.style.color = '#666'; }
         });
         charCount.textContent = `${textarea.value.length} / 1500 자`;
-
-        // 개인정보 동의 탭 기능
         const openPolicyBtn = document.getElementById('openPolicyBtn');
         const agreementCheckbox = document.getElementById('agreement');
-
-        openPolicyBtn.addEventListener('click', () => {
-            window.open('policy.html', '_blank');
-        });
-
+        openPolicyBtn.addEventListener('click', () => { window.open('policy.html', '_blank'); });
         function enableConsent() {
             agreementCheckbox.disabled = false;
             agreementCheckbox.checked = true;
         }
+
+        // --- ✅ 실시간 경고 메시지 기능 ---
+        
+        // 1. 각 입력 필드와 경고 메시지 요소를 가져옵니다.
+        const fullNameInput = document.getElementById('fullName');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const resumeLinkInput = document.getElementById('resume_link');
+        const portfolioLinkInput = document.getElementById('portfolio_link');
+
+        const fullNameWarning = document.getElementById('fullNameWarning');
+        const phoneWarning = document.getElementById('phoneWarning');
+        const emailWarning = document.getElementById('emailWarning');
+        const resumeLinkWarning = document.getElementById('resumeLinkWarning');
+        const portfolioLinkWarning = document.getElementById('portfolioLinkWarning');
+
+        // 2. 각 항목별로 유효성 검사를 위한 정규 표현식을 정의합니다.
+        const nameRegex = /^[가-힣a-zA-Z\s]+$/; // 한글, 영문, 띄어쓰기만 허용
+        const phoneRegex = /^[0-9]+$/; // 숫자만 허용
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 기본적인 이메일 형식
+        const urlRegex = /^(https?:\/\/)/; // http:// 또는 https:// 로 시작
+
+        // 3. 실시간으로 입력값을 감지하여 경고 메시지를 표시하거나 숨기는 함수를 추가합니다.
+        function validateInput(inputElement, regex, warningElement) {
+            inputElement.addEventListener('input', () => {
+                // 입력값이 있고, 정규식에 맞지 않으면 경고를 표시
+                if (inputElement.value && !regex.test(inputElement.value)) {
+                    warningElement.style.display = 'block';
+                } else {
+                    // 입력값이 없거나, 정규식에 맞으면 경고를 숨김
+                    warningElement.style.display = 'none';
+                }
+            });
+        }
+
+        // 4. 각 입력 필드에 유효성 검사 함수를 연결합니다.
+        validateInput(fullNameInput, nameRegex, fullNameWarning);
+        validateInput(phoneInput, phoneRegex, phoneWarning);
+        validateInput(emailInput, emailRegex, emailWarning);
+        validateInput(resumeLinkInput, urlRegex, resumeLinkWarning);
+        validateInput(portfolioLinkInput, urlRegex, portfolioLinkWarning);
     </script>
 </body>
 </html>
